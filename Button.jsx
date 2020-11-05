@@ -1,7 +1,7 @@
 const { React } = require("powercord/webpack");
 const { Clickable } = require("powercord/components");
 
-class DownloadButton extends React.Component {
+class HideButton extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -31,4 +31,4 @@ class DownloadButton extends React.Component {
     }
 }
 
-module.exports = DownloadButton;
+module.exports = HideButton;
