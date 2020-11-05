@@ -1,0 +1,25 @@
+.PreviewHider {
+  color: var(--text-normal);
+  border-right: 1px var(--background-accent) solid;
+
+  div {
+    margin: 0 8px;
+    white-space: nowrap;
+    font-size: 14px;
+    padding: 3px 5px;
+    transition: background-color .1s;
+    cursor: pointer;
+  }
+
+  div:hover {
+    background-color: var(--interactive-muted);
+  }
+}
+
+.hidden-w2eshj {
+
+  .container-1ov-mD {
+    display: none !important;
+  }
+  
+}
