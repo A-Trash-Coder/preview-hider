@@ -8,7 +8,8 @@ module.exports = class PreviewHider extends Plugin {
         this.loadStylesheet("style.scss");
 
         const MiniPopover = await getModule(m => m.default && m.default.displayName === 'MiniPopover');
-        
+        const oldDefault = MiniPopover.default;
+
         inject('preview-hider', MiniPopover, 'default', (args, res) => {
             const attachments = res.props.children[0].props.message.attachments
             const embeds = res.props.children[0].props.message.embeds
@@ -21,6 +22,7 @@ module.exports = class PreviewHider extends Plugin {
 
             return res;
         });
+        Object.assign(MiniPopover.default, oldDefault);
     }
 
     pluginWillUnload() {
