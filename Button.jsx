@@ -17,7 +17,6 @@ class DownloadButton extends React.Component {
         return (
             <div className={["PreviewHider"]}>
                 <Clickable onClick={() => {
-                    console.log(this.state.isHidden)
                     const ele = document.getElementById("chat-messages-" + this.props.res.props.children[1].props.message.id)
                     if (this.state.isHidden) {
                         ele.classList.remove('hidden-w2eshj')
