@@ -1,7 +1,7 @@
 {
-  "name": "preview-hider",
-  "description": "A plugin to hide image/link/embed previews",
-  "author": "A Trash Coder#0214",
+  "name": "Preview Hider",
+  "description": "Hides embedded objects such as images, links, videos etc.",
+  "author": "A Trash Coder#0214, M|-|4r13y ツ#1051",
   "license": "MIT",
-  "version": "0.0.1"
+  "version": "0.0.2"
 }
