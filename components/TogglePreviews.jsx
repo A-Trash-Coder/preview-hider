@@ -11,7 +11,7 @@ class TogglePreviews extends React.PureComponent {
 
     this.settings = props.settings;
     this.state = {
-      hidden: get('hiddenPreviews').includes(this.props.message.id)
+      hidden: get('hiddenPreviews', []).includes(this.props.message.id)
     };
   }
 
