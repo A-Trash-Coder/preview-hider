@@ -3,7 +3,7 @@ const { Tooltip, Icon } = require('powercord/components');
 
 const MiniPopover = getModule([ 'Button', 'Separator' ], false);
 
-class TogglePreviews extends React.Component {
+class TogglePreviews extends React.PureComponent {
   constructor (props) {
     super(props);
 
@@ -11,7 +11,7 @@ class TogglePreviews extends React.Component {
 
     this.settings = props.settings;
     this.state = {
-      isHidden: get('hiddenPreviews').includes(this.props.message.id)
+      hidden: get('hiddenPreviews').includes(this.props.message.id)
     };
   }
 
@@ -29,17 +29,19 @@ class TogglePreviews extends React.Component {
     set('hiddenPreviews', hiddenPreviews);
 
     this.props.onToggle();
-    this.setState({ isHidden: !this.state.isHidden });
+    this.setState({ hidden: !this.state.hidden });
   }
 
   render () {
+    const previewLabel = this.props.message.embeds.length > 1 || this.props.message.attachments.length > 1 ? 'Previews' : 'Preview';
+
     return (
-      <Tooltip text={`${this.state.isHidden ? 'Show' : 'Hide'} Previews`}>
+      <Tooltip text={`${this.state.hidden ? 'Show' : 'Hide'} ${previewLabel}`}>
         <MiniPopover.Button
           className='preview-hider-button'
           onClick={this.handleHidePreviews.bind(this)}
         >
-          <Icon name={this.state.isHidden ? 'Eye' : 'EyeHidden'} width={20} height={20} />
+          <Icon name={this.state.hidden ? 'Eye' : 'EyeHidden'} width={20} height={20} />
         </MiniPopover.Button>
       </Tooltip>
     );

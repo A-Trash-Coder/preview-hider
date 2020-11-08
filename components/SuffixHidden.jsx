@@ -1,6 +1,6 @@
 const { React, Flux } = require('powercord/webpack');
 
-class SuffixHidden extends React.Component {
+class SuffixHidden extends React.PureComponent {
   render () {
     return (
       <span className='preview-hider-hidden-suffix' role='note'>

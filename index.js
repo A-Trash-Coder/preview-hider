@@ -3,8 +3,7 @@ const { React, FluxDispatcher, getModule } = require('powercord/webpack');
 const { inject, uninject } = require('powercord/injector');
 const { findInTree, findInReactTree } = require('powercord/util');
 
-const TogglePreviews = require('./components/TogglePreviews');
-const SuffixHidden = require('./components/SuffixHidden');
+const { TogglePreviews, SuffixHidden } = require('./components');
 
 module.exports = class PreviewHider extends Plugin {
   get hiddenPreviews () {
@@ -52,17 +51,18 @@ module.exports = class PreviewHider extends Plugin {
 
     MiniPopover.default.displayName = 'MiniPopover';
 
-    FluxDispatcher.subscribe('MESSAGE_DELETE', this.purgeStaleMessageIds.bind(this));
+    // FYI: this is used to purge a stale message ID that just so happens to still be sitting in the settings file.
+    FluxDispatcher.subscribe('MESSAGE_DELETE', this.purgeStaleMessageId.bind(this));
   }
 
   pluginWillUnload () {
-    FluxDispatcher.unsubscribe('MESSAGE_DELETE', this.purgeStaleMessageIds.bind(this));
+    FluxDispatcher.unsubscribe('MESSAGE_DELETE', this.purgeStaleMessageId.bind(this));
 
     uninject('preview-hider-message');
     uninject('preview-hider-button');
   }
 
-  purgeStaleMessageIds (data) {
+  purgeStaleMessageId (data) {
     if (this.hiddenPreviews.includes(data.id)) {
       this.hiddenPreviews = this.hiddenPreviews.filter(id => id !== data.id);
     }
