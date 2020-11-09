@@ -41,7 +41,7 @@ class TogglePreviews extends React.PureComponent {
           className='preview-hider-button'
           onClick={this.handleHidePreviews.bind(this)}
         >
-          <Icon name={this.state.hidden ? 'Eye' : 'EyeHidden'} width={20} height={20} />
+          <Icon name={this.state.hidden ? 'EyeHidden' : 'Eye'} width={20} height={20} />
         </MiniPopover.Button>
       </Tooltip>
     );

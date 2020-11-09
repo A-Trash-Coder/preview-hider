@@ -30,8 +30,8 @@ module.exports = class PreviewHider extends Plugin {
     });
 
     Message.default.displayName = 'Message';
-
     const MiniPopover = await getModule(m => m.default?.displayName === 'MiniPopover');
+    const oldDefault = MiniPopover.default;
     inject('preview-hider-button', MiniPopover, 'default', (_, res) => {
       const message = findInTree(res, n => n?.id && n?.author, { walkable: [ 'props', 'children', 'message' ] });
       if (!message || (message.attachments.length === 0 && message.embeds.length === 0)) {
@@ -48,7 +48,8 @@ module.exports = class PreviewHider extends Plugin {
 
       return res;
     });
-
+    
+    Object.assign(MiniPopover.default, oldDefault);
     MiniPopover.default.displayName = 'MiniPopover';
 
     // FYI: this is used to purge a stale message ID that just so happens to still be sitting in the settings file.
