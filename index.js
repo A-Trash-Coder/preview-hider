@@ -34,7 +34,7 @@ module.exports = class PreviewHider extends Plugin {
     const MiniPopover = await getModule(m => m.default?.displayName === 'MiniPopover');
     inject('preview-hider-button', MiniPopover, 'default', (_, res) => {
       const message = findInTree(res, n => n?.id && n?.author, { walkable: [ 'props', 'children', 'message' ] });
-      if (message && message.attachments.length === 0 && message.embeds.length === 0) {
+      if (!message || (message.attachments.length === 0 && message.embeds.length === 0)) {
         return res;
       }
 
