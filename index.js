@@ -42,7 +42,7 @@ module.exports = class PreviewHider extends Plugin {
         React.createElement(TogglePreviews, {
           message,
           settings: this.settings,
-          onToggle: () => this.forceUpdateMessage(message)
+          //onToggle: () => this.forceUpdateMessage(message)
         })
       );
 

@@ -1,10 +1,10 @@
 const { React, getModule } = require('powercord/webpack');
 const { Tooltip, Icon } = require('powercord/components');
 
-const MiniPopover = getModule([ 'Button', 'Separator' ], false);
+const MiniPopover = getModule(['Button', 'Separator'], false);
 
 class TogglePreviews extends React.PureComponent {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     const get = (key, value) => props.settings.get(key, value);
@@ -15,7 +15,7 @@ class TogglePreviews extends React.PureComponent {
     };
   }
 
-  handleHidePreviews () {
+  handleHidePreviews() {
     const { get, set } = this.settings;
     const { message } = this.props;
 
@@ -28,11 +28,11 @@ class TogglePreviews extends React.PureComponent {
 
     set('hiddenPreviews', hiddenPreviews);
 
-    this.props.onToggle();
+    //this.props.onToggle();
     this.setState({ hidden: !this.state.hidden });
   }
 
-  render () {
+  render() {
     const previewLabel = this.props.message.embeds.length > 1 || this.props.message.attachments.length > 1 ? 'Previews' : 'Preview';
 
     return (
